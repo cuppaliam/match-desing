@@ -1,6 +1,5 @@
-import { Loader2 } from "lucide-react";
+import { ChevronDown, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -67,14 +66,12 @@ export function FormElements() {
 						Game Type
 					</Label>
 					<div className="relative">
-						<select className="w-full rounded-lg border border-violet-border bg-white px-3 py-2 text-sm text-violet-primary appearance-none focus:outline-none focus:ring-2 focus:ring-grapefruit-400 focus:border-grapefruit-400">
+						<select className="w-full rounded-lg border border-violet-border bg-white px-3 py-2 pr-9 text-sm text-violet-primary appearance-none focus:outline-none focus:ring-2 focus:ring-grapefruit-400 focus:border-grapefruit-400 transition-colors hover:border-violet-secondary">
 							<option>Competitive</option>
 							<option>Social</option>
 							<option>Casual</option>
 						</select>
-						<span className="absolute right-3 top-1/2 -translate-y-1/2 text-violet-muted pointer-events-none">
-							▾
-						</span>
+						<ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-violet-muted pointer-events-none" />
 					</div>
 				</div>
 
@@ -85,20 +82,17 @@ export function FormElements() {
 					</Label>
 					<div className="flex flex-wrap gap-2">
 						{days.map((day, i) => (
-							<label
+							<button
 								key={day}
-								className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm cursor-pointer transition-colors ${
+								type="button"
+								className={`px-3 py-1.5 rounded-full border text-sm font-medium transition-colors ${
 									i === 5 || i === 6
-										? "bg-grapefruit-50 border-grapefruit-300 text-grapefruit-700"
+										? "bg-grapefruit-400 border-grapefruit-500 text-white"
 										: "bg-white border-violet-border text-violet-secondary hover:bg-violet-mid"
 								}`}
 							>
-								<Checkbox
-									defaultChecked={i === 5 || i === 6}
-									className="w-3.5 h-3.5 data-[state=checked]:bg-grapefruit-400 data-[state=checked]:border-grapefruit-400"
-								/>
 								{day}
-							</label>
+							</button>
 						))}
 					</div>
 				</div>
@@ -110,22 +104,17 @@ export function FormElements() {
 					</Label>
 					<div className="grid grid-cols-3 gap-2">
 						{timeSlots.map((slot, i) => (
-							<label
+							<button
 								key={slot}
-								className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm cursor-pointer transition-colors ${
+								type="button"
+								className={`px-3 py-2 rounded-lg border text-xs font-medium leading-tight transition-colors ${
 									i === 0
-										? "bg-grapefruit-50 border-grapefruit-300 text-grapefruit-700"
+										? "bg-grapefruit-400 border-grapefruit-500 text-white"
 										: "bg-white border-violet-border text-violet-secondary hover:bg-violet-mid"
 								}`}
 							>
-								<input
-									type="radio"
-									name="timeslot"
-									defaultChecked={i === 0}
-									className="accent-grapefruit-400"
-								/>
-								<span className="text-xs leading-tight">{slot}</span>
-							</label>
+								{slot}
+							</button>
 						))}
 					</div>
 				</div>
@@ -174,8 +163,7 @@ export function FormElements() {
 
 				{/* Submit */}
 				<Button
-					className="w-full text-white"
-					style={{ backgroundColor: "#FF6347" }}
+					className="w-full"
 					disabled
 				>
 					<Loader2 className="w-4 h-4 mr-2 animate-spin" />

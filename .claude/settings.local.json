@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 << 'PYEOF'\ncontent = open\\('/home/liamc/2026/testing/match-design/src/app/brief/page.tsx'\\).read\\(\\)\nold = '\\\\t\\\\t\\\\t\\\\t\\\\tbackground: \"var\\(--gradient-brand\\)\",\\\\n\\\\t\\\\t\\\\t\\\\t\\\\tminHeight: 260,'\nnew = '\\\\t\\\\t\\\\t\\\\t\\\\tbackground: \"linear-gradient\\(rgba\\(0,0,0,0.18\\), rgba\\(0,0,0,0.10\\)\\), var\\(--gradient-brand\\)\",\\\\n\\\\t\\\\t\\\\t\\\\t\\\\tminHeight: 260,'\nif old in content:\n    open\\('/home/liamc/2026/testing/match-design/src/app/brief/page.tsx', 'w'\\).write\\(content.replace\\(old, new, 1\\)\\)\n    print\\(\"SUCCESS\"\\)\nelse:\n    print\\(\"NOT FOUND\"\\)\nPYEOF)"
+      "Bash(python3 << 'PYEOF'\ncontent = open\\('/home/liamc/2026/testing/match-design/src/app/brief/page.tsx'\\).read\\(\\)\nold = '\\\\t\\\\t\\\\t\\\\t\\\\tbackground: \"var\\(--gradient-brand\\)\",\\\\n\\\\t\\\\t\\\\t\\\\t\\\\tminHeight: 260,'\nnew = '\\\\t\\\\t\\\\t\\\\t\\\\tbackground: \"linear-gradient\\(rgba\\(0,0,0,0.18\\), rgba\\(0,0,0,0.10\\)\\), var\\(--gradient-brand\\)\",\\\\n\\\\t\\\\t\\\\t\\\\t\\\\tminHeight: 260,'\nif old in content:\n    open\\('/home/liamc/2026/testing/match-design/src/app/brief/page.tsx', 'w'\\).write\\(content.replace\\(old, new, 1\\)\\)\n    print\\(\"SUCCESS\"\\)\nelse:\n    print\\(\"NOT FOUND\"\\)\nPYEOF)",
+      "Bash(npm run:*)"
     ]
   }
 }

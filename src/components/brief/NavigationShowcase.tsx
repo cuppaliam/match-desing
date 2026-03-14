@@ -58,42 +58,44 @@ function BottomDockPreview() {
 		<div className="max-w-sm mx-auto">
 			<div className="bg-white shadow-elevated rounded-2xl overflow-hidden">
 				{/* Simulated phone screen */}
-				<div className="h-32 bg-violet-bg flex items-center justify-center">
+				<div className="relative h-44 bg-violet-bg flex items-center justify-center">
 					<p className="text-violet-muted text-sm">App content...</p>
-				</div>
-				{/* Bottom dock */}
-				<div className="flex items-center justify-around px-2 py-3 border-t border-violet-border">
-					{tabs.map((tab) => (
-						<button
-							key={tab.label}
-							type="button"
-							className="flex flex-col items-center gap-1 flex-1"
-						>
-							{tab.featured ? (
-								<div className="w-12 h-12 -mt-6 rounded-full bg-grapefruit-400 shadow-elevated flex items-center justify-center transition-all duration-200 hover:bg-grapefruit-500 hover:scale-105 active:scale-95">
-									<tab.icon className="w-6 h-6 text-white" />
-								</div>
-							) : (
-								<div className="relative flex items-center justify-center">
-									{tab.active && (
-										<div className="absolute -top-2 w-1 h-1 rounded-full bg-grapefruit-400" />
+					{/* Floating dock — inset pill, detached from edges */}
+					<div className="absolute bottom-3 left-3 right-3">
+						<div className="flex items-center justify-around px-2 py-2.5 bg-white/95 backdrop-blur-sm rounded-2xl shadow-elevated border border-violet-border/40">
+							{tabs.map((tab) => (
+								<button
+									key={tab.label}
+									type="button"
+									className="flex flex-col items-center gap-1 flex-1"
+								>
+									{tab.featured ? (
+										<div className="w-11 h-11 -mt-5 rounded-full bg-grapefruit-400 shadow-elevated flex items-center justify-center transition-all duration-200 hover:bg-grapefruit-500 hover:scale-105 active:scale-95">
+											<tab.icon className="w-5 h-5 text-white" />
+										</div>
+									) : (
+										<div className="relative flex items-center justify-center">
+											{tab.active && (
+												<div className="absolute -top-2 w-1 h-1 rounded-full bg-grapefruit-400" />
+											)}
+											<tab.icon
+												className={`w-5 h-5 transition-colors duration-150 ${tab.active ? "text-grapefruit-400" : "text-violet-muted"}`}
+											/>
+										</div>
 									)}
-									<tab.icon
-										className={`w-5 h-5 transition-colors duration-150 ${tab.active ? "text-grapefruit-400" : "text-violet-muted"}`}
-									/>
-								</div>
-							)}
-							<span
-								className={`text-xs ${
-									tab.active
-										? "text-grapefruit-400 font-medium"
-										: "text-violet-muted"
-								} ${tab.featured ? "mt-1" : ""}`}
-							>
-								{tab.label}
-							</span>
-						</button>
-					))}
+									<span
+										className={`text-xs ${
+											tab.active
+												? "text-grapefruit-400 font-medium"
+												: "text-violet-muted"
+										} ${tab.featured ? "mt-1" : ""}`}
+									>
+										{tab.label}
+									</span>
+								</button>
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
