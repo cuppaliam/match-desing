@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans } from "next/font/google";
+import { BottomDock } from "@/components/BottomDock";
+import { NavBar } from "@/components/NavBar";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
 
@@ -20,22 +22,25 @@ const jakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-	title: "Match — Design Brief",
-	description:
-		"Component Library & Design Brief for the Badminton Matchmaking App",
+	title: "Match",
+	description: "Find your next badminton match in Melbourne",
 };
 
 export default function RootLayout({
 	children,
-}: Readonly<{
+}: {
 	children: React.ReactNode;
-}>) {
+}) {
 	return (
 		<html lang="en">
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${jakartaSans.variable} antialiased`}
 			>
-				<TooltipProvider>{children}</TooltipProvider>
+				<TooltipProvider>
+					<NavBar />
+					<main className="min-h-screen pb-24 md:pb-8">{children}</main>
+					<BottomDock />
+				</TooltipProvider>
 			</body>
 		</html>
 	);
