@@ -1,3 +1,5 @@
+import { Bell } from "lucide-react";
+
 const skillLevels = [
 	{
 		level: 1,
@@ -174,7 +176,7 @@ export function BadgesAndTags() {
 							<span
 								className={`px-4 py-1.5 rounded-full text-sm font-medium border ${
 									tag.selected
-										? "bg-violet-primary text-white border-violet-primary"
+										? "bg-grapefruit-400 text-white border-grapefruit-500"
 										: "bg-white text-violet-secondary border-violet-border"
 								}`}
 							>
@@ -223,7 +225,7 @@ export function BadgesAndTags() {
 					{notificationSizes.map((n) => (
 						<div key={n.label} className="flex flex-col items-center gap-3">
 							<div className="relative w-10 h-10 bg-white border border-violet-border rounded-xl flex items-center justify-center shadow-card">
-								<span className="text-violet-muted text-lg">🔔</span>
+								<Bell className="w-5 h-5 text-violet-muted" />
 								{n.content === null ? (
 									<span className="absolute top-1 right-1 w-2.5 h-2.5 bg-grapefruit-400 rounded-full border-2 border-white" />
 								) : (

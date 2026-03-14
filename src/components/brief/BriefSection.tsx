@@ -22,7 +22,7 @@ export function BriefSection({
 					<span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-grapefruit-400 text-white text-sm font-bold flex-shrink-0">
 						{number}
 					</span>
-					<h2 className="text-2xl font-bold text-violet-primary">{title}</h2>
+					<h2 className="text-2xl font-bold text-violet-primary" style={{ fontFamily: "var(--font-display)" }}>{title}</h2>
 				</div>
 				{description && (
 					<p className="text-violet-muted text-sm ml-11">{description}</p>

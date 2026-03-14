@@ -29,7 +29,7 @@ function NavbarPreview() {
 				<div className="flex items-center gap-3">
 					<button
 						type="button"
-						className="relative w-8 h-8 flex items-center justify-center text-violet-secondary hover:text-violet-primary"
+						className="relative w-8 h-8 flex items-center justify-center text-violet-secondary hover:text-violet-primary transition-colors"
 					>
 						<Bell className="w-5 h-5" />
 						<span className="absolute top-1 right-1 w-2 h-2 bg-grapefruit-400 rounded-full" />
@@ -70,13 +70,18 @@ function BottomDockPreview() {
 							className="flex flex-col items-center gap-1 flex-1"
 						>
 							{tab.featured ? (
-								<div className="w-12 h-12 -mt-6 rounded-full bg-grapefruit-400 shadow-elevated flex items-center justify-center">
+								<div className="w-12 h-12 -mt-6 rounded-full bg-grapefruit-400 shadow-elevated flex items-center justify-center transition-all duration-200 hover:bg-grapefruit-500 hover:scale-105 active:scale-95">
 									<tab.icon className="w-6 h-6 text-white" />
 								</div>
 							) : (
-								<tab.icon
-									className={`w-5 h-5 ${tab.active ? "text-grapefruit-400" : "text-violet-muted"}`}
-								/>
+								<div className="relative flex items-center justify-center">
+									{tab.active && (
+										<div className="absolute -top-2 w-1 h-1 rounded-full bg-grapefruit-400" />
+									)}
+									<tab.icon
+										className={`w-5 h-5 transition-colors duration-150 ${tab.active ? "text-grapefruit-400" : "text-violet-muted"}`}
+									/>
+								</div>
 							)}
 							<span
 								className={`text-xs ${

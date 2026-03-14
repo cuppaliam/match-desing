@@ -15,17 +15,24 @@ interface LobbyCardProps {
 	description?: string;
 }
 
+// Full 10-level colour scale — matches BadgesAndTags for system consistency
 const skillColors: Record<number, string> = {
-	3: "bg-green-100 text-green-700",
-	5: "bg-blue-100 text-blue-700",
+	1: "bg-emerald-100 text-emerald-700",
+	2: "bg-green-100 text-green-700",
+	3: "bg-cyan-100 text-cyan-700",
+	4: "bg-blue-100 text-blue-700",
+	5: "bg-violet-100 text-violet-700",
+	6: "bg-purple-100 text-purple-700",
 	7: "bg-orange-100 text-orange-700",
-	9: "bg-purple-100 text-purple-700",
+	8: "bg-amber-100 text-amber-700",
+	9: "bg-rose-100 text-rose-700",
+	10: "bg-violet-primary text-grapefruit-400",
 };
 
 const gameTypeColors: Record<string, string> = {
 	Competitive: "bg-grapefruit-50 text-grapefruit-700 border-grapefruit-200",
 	Social: "bg-violet-bg text-violet-secondary border-violet-border",
-	Casual: "bg-gray-100 text-gray-600 border-gray-200",
+	Casual: "bg-violet-mid text-violet-secondary border-violet-border",
 };
 
 function LobbyCard({
@@ -41,10 +48,14 @@ function LobbyCard({
 	description = "Competitive singles, intermediate. Looking for a solid rally partner.",
 }: LobbyCardProps) {
 	const wrapperClass = {
-		standard: "bg-white rounded-2xl shadow-card p-4",
-		elevated: "bg-white rounded-2xl shadow-elevated p-4",
-		outlined: "bg-white rounded-2xl border-2 border-grapefruit-200 p-4",
-		compact: "bg-white rounded-xl shadow-card p-3",
+		standard:
+			"bg-white rounded-2xl shadow-card p-4 transition-all duration-200 hover:shadow-elevated hover:-translate-y-0.5 cursor-pointer",
+		elevated:
+			"bg-white rounded-2xl shadow-elevated p-4 transition-all duration-200 hover:-translate-y-0.5 cursor-pointer",
+		outlined:
+			"bg-white rounded-2xl border-2 border-grapefruit-200 p-4 transition-all duration-200 hover:shadow-elevated hover:-translate-y-0.5 cursor-pointer",
+		compact:
+			"bg-white rounded-xl shadow-card p-3 transition-colors duration-150 hover:bg-violet-mid/30 cursor-pointer",
 	}[variant];
 
 	const isCompact = variant === "compact";
@@ -68,7 +79,7 @@ function LobbyCard({
 					</div>
 				</div>
 				<span
-					className={`px-2 py-0.5 rounded-full text-xs font-semibold ${skillColors[skill] ?? "bg-gray-100 text-gray-600"}`}
+					className={`px-2 py-0.5 rounded-full text-xs font-semibold ${skillColors[skill] ?? "bg-violet-bg text-violet-secondary"}`}
 				>
 					Lvl {skill}
 				</span>
@@ -94,9 +105,7 @@ function LobbyCard({
 			</div>
 
 			{/* Meta */}
-			<div
-				className={`flex flex-wrap gap-3 text-violet-muted mb-3 ${isCompact ? "text-xs" : "text-xs"}`}
-			>
+			<div className="flex flex-wrap gap-3 text-xs text-violet-muted mb-3">
 				<span className="flex items-center gap-1">
 					<Calendar className="w-3 h-3" />
 					{day}
@@ -117,18 +126,9 @@ function LobbyCard({
 
 			{/* CTA */}
 			{!isCompact ? (
-				<Button
-					className="w-full text-white text-sm h-9"
-					style={{ backgroundColor: "#FF6347" }}
-				>
-					Join Lobby
-				</Button>
+				<Button className="w-full text-sm h-9">Join Lobby</Button>
 			) : (
-				<Button
-					className="w-full text-white text-xs h-7"
-					style={{ backgroundColor: "#FF6347" }}
-					size="sm"
-				>
+				<Button className="w-full text-xs h-7" size="sm">
 					Join
 				</Button>
 			)}
@@ -138,7 +138,7 @@ function LobbyCard({
 
 function VenueCard() {
 	return (
-		<div className="bg-white rounded-2xl shadow-card p-4">
+		<div className="bg-white rounded-2xl shadow-card p-4 transition-all duration-200 hover:shadow-elevated hover:-translate-y-0.5 cursor-pointer">
 			<div className="flex items-start justify-between">
 				<div>
 					<h4 className="font-semibold text-violet-primary">
@@ -159,7 +159,7 @@ function VenueCard() {
 						</span>
 					</div>
 				</div>
-				<div className="w-12 h-12 rounded-xl bg-violet-bg flex items-center justify-center flex-shrink-0">
+				<div className="w-12 h-12 rounded-xl bg-grapefruit-50 border border-grapefruit-100 flex items-center justify-center flex-shrink-0">
 					<MapPin className="w-5 h-5 text-grapefruit-400" />
 				</div>
 			</div>
@@ -172,13 +172,13 @@ export function CardShowcase() {
 		<div className="space-y-8">
 			<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				<div>
-					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 						Standard
 					</p>
 					<LobbyCard variant="standard" />
 				</div>
 				<div>
-					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 						Elevated
 					</p>
 					<LobbyCard
@@ -195,7 +195,7 @@ export function CardShowcase() {
 					/>
 				</div>
 				<div>
-					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 						Outlined
 					</p>
 					<LobbyCard
@@ -212,7 +212,7 @@ export function CardShowcase() {
 					/>
 				</div>
 				<div>
-					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-2">
+					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 						Compact — list view
 					</p>
 					<div className="space-y-2">
@@ -235,7 +235,7 @@ export function CardShowcase() {
 
 			{/* Venue Card */}
 			<div>
-				<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-2">
+				<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 					Venue Card
 				</p>
 				<VenueCard />

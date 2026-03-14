@@ -28,6 +28,22 @@ import {
 	X,
 	XCircle,
 } from "lucide-react";
+import Image from "next/image";
+
+// Shuttlecock icon rendered from the brand SVG asset
+function ShuttlecockIcon({ className }: { className?: string }) {
+	return (
+		<div className={`relative ${className}`}>
+			<Image
+				src="/shuttlecock.svg"
+				alt="Shuttlecock"
+				fill
+				className="object-contain"
+				style={{ filter: "invert(13%) sepia(23%) saturate(1200%) hue-rotate(223deg) brightness(50%) contrast(85%)" }}
+			/>
+		</div>
+	);
+}
 
 const iconGroups = [
 	{
@@ -90,6 +106,23 @@ const sizes = [
 export function IconShowcase() {
 	return (
 		<div className="space-y-8">
+			{/* Shuttlecock brand icon callout */}
+			<div className="bg-grapefruit-50 border border-grapefruit-200 rounded-2xl p-4 flex items-center gap-4">
+				<div className="w-12 h-12 rounded-xl bg-white shadow-card flex items-center justify-center flex-shrink-0">
+					<ShuttlecockIcon className="w-7 h-7" />
+				</div>
+				<div>
+					<p className="text-sm font-semibold text-grapefruit-700">
+						Shuttlecock — Brand Icon
+					</p>
+					<p className="text-xs text-grapefruit-500 mt-0.5">
+						Sport-specific SVG asset. Used in hero decoration, empty states, and
+						brand touchpoints. Drawn from{" "}
+						<code className="font-mono text-xs">/public/shuttlecock.svg</code>
+					</p>
+				</div>
+			</div>
+
 			{iconGroups.map((group) => (
 				<div key={group.label}>
 					<h3 className="text-sm font-semibold text-violet-secondary uppercase tracking-wide mb-3">
@@ -99,7 +132,7 @@ export function IconShowcase() {
 						{group.icons.map(({ Icon, name }) => (
 							<div
 								key={name}
-								className="flex flex-col items-center gap-1.5 bg-white rounded-xl shadow-card px-3 py-3 w-20"
+								className="flex flex-col items-center gap-1.5 bg-white rounded-xl shadow-card px-3 py-3 w-20 transition-colors hover:bg-violet-mid/40"
 							>
 								<Icon className="w-6 h-6 text-violet-primary" />
 								<span className="text-xs text-violet-muted text-center leading-tight">

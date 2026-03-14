@@ -30,30 +30,13 @@ export function ButtonShowcase() {
 								Primary
 							</td>
 							<td className="py-4 text-center">
-								<Button
-									size="sm"
-									style={{ backgroundColor: "#FF6347", color: "white" }}
-									className="hover:opacity-90"
-								>
-									Join Lobby
-								</Button>
+								<Button size="sm">Join Lobby</Button>
 							</td>
 							<td className="py-4 text-center">
-								<Button
-									style={{ backgroundColor: "#FF6347", color: "white" }}
-									className="hover:opacity-90"
-								>
-									Join Lobby
-								</Button>
+								<Button>Join Lobby</Button>
 							</td>
 							<td className="py-4 text-center">
-								<Button
-									size="lg"
-									style={{ backgroundColor: "#FF6347", color: "white" }}
-									className="hover:opacity-90"
-								>
-									Join Lobby
-								</Button>
+								<Button size="lg">Join Lobby</Button>
 							</td>
 						</tr>
 						{/* Secondary */}
@@ -150,43 +133,29 @@ export function ButtonShowcase() {
 				</h3>
 				<div className="flex flex-wrap gap-3 bg-white rounded-2xl shadow-card p-6">
 					<div className="flex flex-col items-center gap-2">
-						<Button style={{ backgroundColor: "#FF6347", color: "white" }}>
-							Default
-						</Button>
+						<Button>Default</Button>
 						<span className="text-xs text-violet-muted">Default</span>
 					</div>
 					<div className="flex flex-col items-center gap-2">
-						<Button style={{ backgroundColor: "#E84C30", color: "white" }}>
-							Hover
-						</Button>
+						{/* Simulate hover state at rest */}
+						<Button className="bg-grapefruit-500 text-white">Hover</Button>
 						<span className="text-xs text-violet-muted">Hover</span>
 					</div>
 					<div className="flex flex-col items-center gap-2">
-						<Button
-							style={{ backgroundColor: "#FF6347", color: "white" }}
-							className="ring-2 ring-grapefruit-400 ring-offset-2"
-						>
+						<Button className="ring-2 ring-grapefruit-400 ring-offset-2">
 							Focus
 						</Button>
 						<span className="text-xs text-violet-muted">Focus</span>
 					</div>
 					<div className="flex flex-col items-center gap-2">
-						<Button
-							style={{ backgroundColor: "#FF6347", color: "white" }}
-							disabled={false}
-						>
+						<Button disabled={false}>
 							<Loader2 className="w-4 h-4 mr-2 animate-spin" />
 							Loading
 						</Button>
 						<span className="text-xs text-violet-muted">Loading</span>
 					</div>
 					<div className="flex flex-col items-center gap-2">
-						<Button
-							style={{ backgroundColor: "#FF8B79", color: "white" }}
-							disabled
-						>
-							Disabled
-						</Button>
+						<Button disabled>Disabled</Button>
 						<span className="text-xs text-violet-muted">Disabled</span>
 					</div>
 				</div>
@@ -219,8 +188,8 @@ export function ButtonShowcase() {
 					<div className="flex flex-col items-center gap-2">
 						<button
 							type="button"
-							className="w-14 h-14 rounded-full bg-grapefruit-400 flex items-center justify-center text-white shadow-glow hover:bg-grapefruit-500 transition-colors"
-							style={{ boxShadow: "0 0 20px rgba(255, 99, 71, 0.30)" }}
+							className="w-14 h-14 rounded-full bg-grapefruit-400 flex items-center justify-center text-white hover:bg-grapefruit-500 transition-all duration-200 hover:scale-105"
+							style={{ boxShadow: "0 0 24px rgba(255, 99, 71, 0.40)" }}
 						>
 							<Mic className="w-6 h-6" />
 						</button>
@@ -229,7 +198,7 @@ export function ButtonShowcase() {
 					<div className="flex flex-col items-center gap-2">
 						<button
 							type="button"
-							className="w-12 h-12 rounded-full bg-grapefruit-400 flex items-center justify-center text-white hover:bg-grapefruit-500 transition-colors"
+							className="w-12 h-12 rounded-full bg-grapefruit-400 flex items-center justify-center text-white hover:bg-grapefruit-500 transition-all duration-200 hover:scale-105 active:scale-95"
 						>
 							<Plus className="w-6 h-6" />
 						</button>
@@ -244,16 +213,10 @@ export function ButtonShowcase() {
 					Full-Width & Pill
 				</h3>
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white rounded-2xl shadow-card p-6">
+					<Button className="w-full rounded-full">Find a Match</Button>
 					<Button
-						className="w-full rounded-full text-white"
-						style={{ backgroundColor: "#FF6347" }}
-					>
-						Find a Match
-					</Button>
-					<Button
-						className="w-full rounded-full"
+						className="w-full rounded-full border-grapefruit-400 text-grapefruit-500 hover:bg-grapefruit-50"
 						variant="outline"
-						style={{ borderColor: "#FF6347", color: "#FF6347" }}
 					>
 						Create a Lobby
 					</Button>

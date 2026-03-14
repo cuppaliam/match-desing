@@ -20,16 +20,34 @@ export default function BriefPage() {
 		<div>
 			{/* Hero */}
 			<div
-				className="w-full flex items-center justify-center px-8 py-16"
+				className="noise-overlay w-full flex items-center justify-center px-8 py-16 relative"
 				style={{
 					background: "linear-gradient(135deg, #FF6347 0%, #C4341E 100%)",
 					minHeight: 260,
 				}}
 			>
-				<div className="text-center space-y-4">
+				{/* Shuttlecock decorations */}
+				<div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
+					<Image
+						src="/shuttlecock.svg"
+						alt=""
+						width={380}
+						height={380}
+						className="absolute -right-16 -bottom-12 rotate-[20deg] invert opacity-[0.08]"
+					/>
+					<Image
+						src="/shuttlecock.svg"
+						alt=""
+						width={180}
+						height={180}
+						className="absolute -left-8 top-4 -rotate-[55deg] invert opacity-[0.06]"
+					/>
+				</div>
+
+				<div className="text-center space-y-4 relative z-10">
 					{/* Logo */}
 					<div className="flex justify-center mb-2">
-						<div className="bg-white/15 rounded-2xl px-6 py-3">
+						<div className="bg-white/15 rounded-2xl px-6 py-3 backdrop-blur-sm">
 							<Image
 								src="/logo.svg"
 								alt="Match"
@@ -87,7 +105,7 @@ export default function BriefPage() {
 							id="typography"
 							number="02"
 							title="Typography"
-							description="Geist Sans throughout, with the custom 'karen' wordmark for the Match brand."
+							description="Two-typeface system: Plus Jakarta Sans for display headings, Geist Sans for UI body text. Warmth for brand moments, clarity for UI."
 						>
 							<Typography />
 						</BriefSection>

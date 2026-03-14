@@ -20,26 +20,42 @@ function MatchFoundModal() {
 			<div className="absolute inset-0 bg-violet-primary/40 rounded-3xl" />
 			{/* Modal card */}
 			<div className="relative mx-4 mt-16 bg-white rounded-3xl overflow-hidden shadow-elevated">
-				{/* Header gradient */}
+				{/* Header gradient with noise texture */}
 				<div
-					className="px-6 pt-8 pb-12 text-center"
+					className="noise-overlay px-6 pt-8 pb-14 text-center"
 					style={{ background: "linear-gradient(135deg, #FF6347, #C4341E)" }}
 				>
-					<p className="text-white/80 text-sm font-medium mb-3">Match Found!</p>
-					{/* Overlapping avatars */}
-					<div className="flex justify-center -space-x-4 mb-4">
-						<Avatar className="w-16 h-16 ring-4 ring-white">
-							<AvatarFallback className="bg-grapefruit-100 text-grapefruit-700 text-lg font-bold">
-								AT
-							</AvatarFallback>
-						</Avatar>
-						<Avatar className="w-16 h-16 ring-4 ring-white">
-							<AvatarFallback className="bg-violet-primary text-white text-lg font-bold">
-								SK
-							</AvatarFallback>
-						</Avatar>
+					<p className="text-white/90 text-base font-bold mb-1 tracking-wide">
+						Match Found!
+					</p>
+					<p className="text-white/60 text-xs mb-5">Your opponent is ready</p>
+					{/* Overlapping avatars with celebration rings */}
+					<div className="flex justify-center -space-x-4 mb-3">
+						<div className="relative">
+							<div className="absolute -inset-2 rounded-full bg-white/25 animate-ring-celebrate" />
+							<Avatar className="w-16 h-16 ring-4 ring-white relative z-10">
+								<AvatarFallback className="bg-grapefruit-100 text-grapefruit-700 text-lg font-bold">
+									AT
+								</AvatarFallback>
+							</Avatar>
+						</div>
+						<div className="relative z-20 self-center">
+							<span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white text-grapefruit-500 text-xs font-black tracking-tighter shadow-card">
+								VS
+							</span>
+						</div>
+						<div className="relative">
+							<div
+								className="absolute -inset-2 rounded-full bg-white/25 animate-ring-celebrate"
+								style={{ animationDelay: "1s" }}
+							/>
+							<Avatar className="w-16 h-16 ring-4 ring-white relative z-10">
+								<AvatarFallback className="bg-violet-primary text-white text-lg font-bold">
+									SK
+								</AvatarFallback>
+							</Avatar>
+						</div>
 					</div>
-					<p className="text-white text-xs">VS</p>
 				</div>
 				{/* Content */}
 				<div className="px-6 py-5 -mt-6">
@@ -49,26 +65,21 @@ function MatchFoundModal() {
 						</h3>
 						<div className="space-y-2">
 							<div className="flex items-center gap-2 text-sm text-violet-secondary">
-								<MapPin className="w-4 h-4 text-grapefruit-400" />
+								<MapPin className="w-4 h-4 text-grapefruit-400 shrink-0" />
 								Doncaster Recreation Centre, Court 3
 							</div>
 							<div className="flex items-center gap-2 text-sm text-violet-secondary">
-								<Calendar className="w-4 h-4 text-grapefruit-400" />
+								<Calendar className="w-4 h-4 text-grapefruit-400 shrink-0" />
 								Saturday, 15 March 2026
 							</div>
 							<div className="flex items-center gap-2 text-sm text-violet-secondary">
-								<Clock className="w-4 h-4 text-grapefruit-400" />
+								<Clock className="w-4 h-4 text-grapefruit-400 shrink-0" />
 								9:00 AM – 10:00 AM
 							</div>
 						</div>
 					</div>
 					<div className="space-y-2">
-						<Button
-							className="w-full text-white"
-							style={{ backgroundColor: "#FF6347" }}
-						>
-							View Lobby
-						</Button>
+						<Button className="w-full">View Lobby</Button>
 						<Button variant="ghost" className="w-full text-violet-secondary">
 							Dismiss
 						</Button>
@@ -114,12 +125,7 @@ function ConfirmJoinSheet() {
 						<span className="text-violet-primary font-medium">Doncaster</span>
 					</div>
 				</div>
-				<Button
-					className="w-full text-white"
-					style={{ backgroundColor: "#FF6347" }}
-				>
-					Confirm Join
-				</Button>
+				<Button className="w-full">Confirm Join</Button>
 			</div>
 		</div>
 	);
@@ -128,7 +134,7 @@ function ConfirmJoinSheet() {
 function VoiceTooltipPreview() {
 	return (
 		<div
-			className="flex flex-col items-center justify-center"
+			className="noise-overlay flex flex-col items-center justify-center"
 			style={{
 				minHeight: 560,
 				background: "linear-gradient(180deg, #EEEAF5, #F8F7FB)",
@@ -136,22 +142,34 @@ function VoiceTooltipPreview() {
 		>
 			<div className="relative flex flex-col items-center gap-4">
 				{/* Tooltip */}
-				<div className="bg-violet-primary text-white text-sm px-4 py-2 rounded-xl shadow-elevated relative">
+				<div className="bg-violet-primary text-white text-sm px-4 py-2.5 rounded-xl shadow-elevated relative">
 					<span>Say "find doubles near Richmond"</span>
 					<div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-violet-primary" />
 				</div>
-				{/* Mic button */}
-				<div
-					className="w-20 h-20 rounded-full flex items-center justify-center text-white shadow-elevated"
-					style={{
-						background: "linear-gradient(135deg, #FF6347, #E84C30)",
-						boxShadow: "0 0 40px rgba(255, 99, 71, 0.50)",
-					}}
-				>
-					<Mic className="w-9 h-9" />
+				{/* Mic button with ambient glow rings */}
+				<div className="relative flex items-center justify-center mt-2">
+					{/* Outer ambient ring */}
+					<div
+						className="absolute w-32 h-32 rounded-full bg-grapefruit-400/10 animate-pulse"
+					/>
+					{/* Inner ring */}
+					<div
+						className="absolute w-24 h-24 rounded-full bg-grapefruit-400/15 animate-pulse"
+						style={{ animationDelay: "0.5s" }}
+					/>
+					{/* Mic button */}
+					<div
+						className="w-20 h-20 rounded-full flex items-center justify-center text-white shadow-elevated relative z-10 transition-transform duration-200 hover:scale-105 active:scale-95"
+						style={{
+							background: "linear-gradient(135deg, #FF6347, #E84C30)",
+							boxShadow: "0 0 40px rgba(255, 99, 71, 0.45)",
+						}}
+					>
+						<Mic className="w-9 h-9" />
+					</div>
 				</div>
-				<p className="text-sm text-violet-secondary">
-					Tap & speak to find matches
+				<p className="text-sm text-violet-secondary mt-2">
+					Tap &amp; speak to find matches
 				</p>
 			</div>
 		</div>
@@ -161,7 +179,7 @@ function VoiceTooltipPreview() {
 export function ModalsAndOverlays() {
 	return (
 		<div className="space-y-8">
-			<div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 				<div>
 					<p className="text-xs font-semibold text-violet-muted uppercase tracking-wide mb-3">
 						Match Found Modal
