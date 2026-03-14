@@ -148,3 +148,84 @@
 .animate-ring-celebrate {
 	animation: ring-celebrate 2s ease-in-out infinite;
 }
+
+/*
+ * Shuttlecock bounce loader
+ *
+ * SVG natural orientation: cork at bottom-left (SW).
+ * rotate(-135deg) → cork points UP  (ascending / peak)
+ * rotate(  45deg) → cork points DOWN (descending / impact)
+ *
+ * Physics sequence per loop:
+ *   0–8%   float at peak (slow, near-stationary)
+ *   8–18%  begin fall, cork snaps to point down
+ *   18–50% accelerating descent, cork down
+ *   50%    impact
+ *   50–55% bounce — cork snaps back up instantly
+ *   55–100% decelerating rise, cork up → back to peak
+ */
+@keyframes shuttle-fly {
+	0% {
+		transform: translateY(0px) rotate(135deg);
+		animation-timing-function: cubic-bezier(0.25, 0, 1, 1);
+	}
+	8% {
+		/* gentle hang at peak before gravity wins */
+		transform: translateY(3px) rotate(135deg);
+		animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+	}
+	18% {
+		/* cork flips down as fall begins */
+		transform: translateY(13px) rotate(-45deg);
+		animation-timing-function: cubic-bezier(0.4, 0, 0.8, 1);
+	}
+	47% {
+		/* fast fall */
+		transform: translateY(63px) rotate(-45deg);
+		animation-timing-function: cubic-bezier(0.0, 0.0, 0.3, 1);
+	}
+	50% {
+		/* impact */
+		transform: translateY(70px) rotate(-45deg);
+		animation-timing-function: ease-out;
+	}
+	55% {
+		/* cork snaps back up on bounce */
+		transform: translateY(62px) rotate(135deg);
+		animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+	}
+	80% {
+		transform: translateY(12px) rotate(135deg);
+		animation-timing-function: ease-out;
+	}
+	92% {
+		transform: translateY(2px) rotate(135deg);
+		animation-timing-function: ease-out;
+	}
+	100% {
+		transform: translateY(0px) rotate(135deg);
+	}
+}
+
+/* Contact shadow — shrinks/fades as shuttle rises, grows/darkens on impact */
+@keyframes shuttle-shadow {
+	0%, 8% {
+		transform: scaleX(0.25);
+		opacity: 0.15;
+		animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+	}
+	50% {
+		transform: scaleX(1);
+		opacity: 0.45;
+		animation-timing-function: ease-out;
+	}
+	55% {
+		transform: scaleX(0.85);
+		opacity: 0.35;
+		animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
+	}
+	92%, 100% {
+		transform: scaleX(0.25);
+		opacity: 0.15;
+	}
+}

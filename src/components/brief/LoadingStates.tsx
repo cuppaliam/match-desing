@@ -28,6 +28,44 @@ function SkeletonLobbyCard() {
 	);
 }
 
+function ShuttlecockBounce() {
+	return (
+		<div className="relative flex justify-center" style={{ width: 80, height: 128 }}>
+			{/* Shuttlecock — CSS mask gives exact grapefruit colour with no filter math */}
+			<div
+				style={{
+					width: 48,
+					height: 48,
+					backgroundColor: "#FF6347",
+					maskImage: "url(/shuttlecock.svg)",
+					WebkitMaskImage: "url(/shuttlecock.svg)",
+					maskSize: "contain",
+					WebkitMaskSize: "contain",
+					maskRepeat: "no-repeat",
+					WebkitMaskRepeat: "no-repeat",
+					maskPosition: "center",
+					WebkitMaskPosition: "center",
+					animation: "shuttle-fly 1.4s ease-in-out infinite",
+				}}
+			/>
+			{/* Contact shadow — grows at impact, shrinks at peak */}
+			<div
+				className="absolute rounded-full bg-grapefruit-400/30"
+				style={{
+					bottom: 8,
+					left: 0,
+					right: 0,
+					margin: "0 auto",
+					width: 36,
+					height: 5,
+					transformOrigin: "center",
+					animation: "shuttle-shadow 1.4s ease-in-out infinite",
+				}}
+			/>
+		</div>
+	);
+}
+
 const spinnerVariants = [
 	{ size: "w-4 h-4", label: "sm", color: "text-grapefruit-400" },
 	{ size: "w-6 h-6", label: "md", color: "text-grapefruit-400" },
@@ -84,6 +122,22 @@ export function LoadingStates() {
 						<span className="text-xs text-violet-muted">white on dark</span>
 					</div>
 				</div>
+			</div>
+
+			{/* Shuttlecock loader */}
+			<div>
+				<h3 className="text-sm font-semibold text-violet-secondary uppercase tracking-wide mb-3">
+					Shuttlecock Loader — Branded Wait State
+				</h3>
+				<div className="bg-white rounded-2xl shadow-card p-8 flex flex-col items-center gap-4">
+					<ShuttlecockBounce />
+					<p className="text-sm text-violet-muted animate-pulse">
+						Finding your match...
+					</p>
+				</div>
+				<p className="text-xs text-violet-muted mt-2 ml-1">
+					Used for matchmaking search, voice processing, and lobby fetch.
+				</p>
 			</div>
 
 			{/* Progress bars */}
